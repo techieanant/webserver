@@ -10,6 +10,10 @@ app.listen(port, () => {
 
 console.log(process.env.ROOT_PATH);
 console.log(process.env.RSVP_PATH);
+const rootPath = process.env.ROOT_PATH || '';
+const rsvpPath = process.env.RSVP_PATH || '';
 
-app.get('/', express.static(path.join(__dirname, process.env.ROOT_PATH)));
-app.get('/rsvp', express.static(path.join(__dirname, process.env.RSVP_PATH)));
+app.use('/', express.static(path.join(__dirname, `${rootPath}`)));
+// app.get('/', express.static(path.join(__dirname, rootPath)));
+
+app.use('/rasveep', express.static(path.join(__dirname, rsvpPath)));
